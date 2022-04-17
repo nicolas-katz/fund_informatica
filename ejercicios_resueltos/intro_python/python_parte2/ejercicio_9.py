@@ -2,3 +2,20 @@
 
 # La edad máxima de todos los alumnos.
 # Los alumnos que tengan la edad máxima
+
+# lista = []
+
+# def alumnos(nombre, edad, end):
+#     while end != "*":
+#         lista.append({"nombre": nombre, "edad": edad})
+#         if(end == "*"):
+#             break
+#     return print(lista)
+
+
+# alumnos("nicolas", 20, "ok")
+# alumnos("lucas", 22, "ok")
+# alumnos("martin", 21, "ok")
+# alumnos("guido", 16, "*")
+
+# ANDA MAL! SE ME TRABA LA COMPU :(
