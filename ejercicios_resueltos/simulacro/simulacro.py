@@ -17,9 +17,9 @@ print(sin_c("ttaatatggttaacatgg"))
 import os, glob
 
 def unir_txt():
-    os.mkdir("resultado")
+    os.mkdir("Resultado")
     lista_txt = glob.glob("*.txt")
-    salida = open("resultado\texto_completo,txt", "a")
+    salida = open("Resultado\\texto_completo,txt", "a")
     for txt in lista_txt:
         archivo = open(txt, "r")
         salida.write(archivo.read())
