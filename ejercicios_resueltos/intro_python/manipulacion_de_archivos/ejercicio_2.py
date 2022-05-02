@@ -1,13 +1,11 @@
 # Escribí un programa que lea un archivo e imprima las primeras n líneas.
 
-def imprimir_lineas(archivo, modo, num_lineas):
+def imprimir_lineas(n_lineas):
     import os
-    path = os.getcwd() + archivo
-    with open(path, modo) as arch:
-        lista = arch.readlines(num_lineas)
-        return print(lista)
+    archivo = open(os.getcwd() + "\\ejercicio_1.txt", "r")
+    lineas = archivo.readlines()
+    for i in range(0, n_lineas):
+        print(lineas[i])
+    archivo.close()
 
-
-imprimir_lineas("\ejercicio_1.txt", "r", 10)
-
-## Esta mal hecho. Consultar en clase
+imprimir_lineas(10)

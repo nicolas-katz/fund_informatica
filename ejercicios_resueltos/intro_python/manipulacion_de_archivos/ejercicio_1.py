@@ -1,14 +1,14 @@
 # Realizá un programa que lea un archivo e imprima cuántas líneas de ese archivo no empiezan con una determinada letra (por ejemplo que imprima cuántas líneas no empiezan con "P").
 
-def cada_linea(archivo, modo, letra):
+def no_empiezan_con_string(string):
     import os
-    path = os.getcwd() + archivo
+    archivo = open(os.getcwd() + "\\ejercicio_1.txt", "r")
+    lineas = archivo.readlines()
     sum = 0
-    with open(path, modo) as arch:
-        lista = arch.readlines()
-        for palabras in lista:
-            if(palabras[0] != letra):
-                sum += 1
-        return print(sum)
+    for linea in lineas:
+        if not linea.startswith(string):
+            sum += 1
+    archivo.close()
+    return print(sum)
 
-cada_linea("\ejercicio_1.txt", "r", "a")
+no_empiezan_con_string("p")
