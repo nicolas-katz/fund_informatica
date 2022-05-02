@@ -3,20 +3,35 @@
 import re
 import os
 
-def frecuencia():
-    contador = {}
-    total = len(open(os.getcwd() + "\\ejercicio_1.txt", "r").read().split())
+# def frecuencia():
+#     contador = {}
+#     total = len(open(os.getcwd() + "\\ejercicio_1.txt", "r").read().split())
 
-    patron = re.compile(r"(\w+)")
+#     patron = re.compile(r"(\w+)")
+#     with open(os.getcwd() + "\\ejercicio_1.txt", "r") as texto:
+#         for linea in texto.readlines():
+#             m = patron.findall(linea)
+#             for palabra in m:
+#                 palabra = palabra.lower()
+#                 if palabra in contador:
+#                     contador[palabra] = (contador[palabra] + 1) / total
+#                 else:
+#                     contador[palabra] = 1 / total
+#     print(contador)
+
+# frecuencia()
+
+def _frecuencia():
+    frecuencia = {}
     with open(os.getcwd() + "\\ejercicio_1.txt", "r") as texto:
-        for linea in texto.readlines():
-            m = patron.findall(linea)
-            for palabra in m:
-                palabra = palabra.lower()
-                if palabra in contador:
-                    contador[palabra] = (contador[palabra] + 1) / total
-                else:
-                    contador[palabra] = 1 / total
-    print(contador)
+        palabras = texto.read().split()
+        for palabra in palabras:
+            if palabra in frecuencia:
+                frecuencia[palabra] += 1
+            else:
+                frecuencia[palabra] = 1
+        for palabra in frecuencia.keys():
+            frecuencia[palabra] = round(frecuencia[palabra] / len(palabras), 3)
+    return print(frecuencia)
 
-frecuencia()
+_frecuencia()
