@@ -1,14 +1,14 @@
 # Escribí un programa que añada a un archivo dado todos los archivos de texto (.txt) que hayan en una determinada carpeta.
 
-import os, glob
+import glob
 
 def unir_txt():
     lista_txt = glob.glob("*.txt")
-    salida = open(os.getcwd() + "\\texto_completo.txt", "a")
+    nuevo_archivo = open("texto_completo.txt", "w")
     for txt in lista_txt:
         archivo = open(txt, "r")
-        salida.write(archivo.read())
+        nuevo_archivo.write(archivo.read())
         archivo.close()
-    salida.close()
+    nuevo_archivo.close()
 
 unir_txt()

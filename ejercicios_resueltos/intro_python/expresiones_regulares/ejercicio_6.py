@@ -4,11 +4,11 @@ def lista_strings(lista, frase):
     import re
     estan = []
     no_estan = []
-    verify = re.findall(r'\w', frase, flags=re.I)
+    verify = re.findall(r'[a-zA-Z]', frase, flags=re.I)
     for letra in lista:
         if letra in verify:
             estan.append(letra)
-        else:
+        else: 
             no_estan.append(letra)
     return print(estan, no_estan)
 
