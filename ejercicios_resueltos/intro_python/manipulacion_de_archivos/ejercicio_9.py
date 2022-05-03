@@ -23,7 +23,7 @@ import os
 
 def _frecuencia():
     frecuencia = {}
-    with open(os.getcwd() + "\\ejercicio_1.txt", "r") as texto:
+    with open("ejercicio_1.txt", "r") as texto:
         palabras = texto.read().split()
         for palabra in palabras:
             if palabra in frecuencia:

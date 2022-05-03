@@ -1,8 +1,7 @@
 # Escribí un programa que lea un archivo e imprima las primeras n líneas.
 
 def imprimir_lineas(n_lineas):
-    import os
-    archivo = open(os.getcwd() + "\\ejercicio_1.txt", "r")
+    archivo = open("ejercicio_1.txt", "r")
     lineas = archivo.readlines()
     for i in range(0, n_lineas):
         print(lineas[i])
