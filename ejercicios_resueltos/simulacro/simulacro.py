@@ -82,16 +82,28 @@ auto = Auto()
 
 # MdE
 
-## ZeroDivisionError
+# ZeroDivisionError
+
 def obtener_media(lista):
     sumatoria = 0
-
-    for valor in lista:
-        sumatoria += valor
-    longitud = len(lista)
-
     try:
-        return sumatoria / longitud
+        for valor in lista:
+            if valor < 0:
+                raise ValueError("no negativos")
+            sumatoria += valor
+            longitud = len(lista)
     except ZeroDivisionError:
         print("No se puede dividir por cero")
+    except TypeError:
+        print("solo numeros")
+    except ValueError as err:
+        print(err)
+    except:
+        print("general")
+    else: 
+        return print(sumatoria / longitud)
+    finally:
+        print("termine la funcion")
 ## TypeError
+
+obtener_media([-1, 2, 3, 4])

@@ -1,0 +1,257 @@
+OBJETOS
+MUMUKI 
+1-	Objetos y mensajes
+Los objetos son entes computacionales. 
+Con IS podemos verificar si dos referencias son idénticas o no 
+Siempre le que mandemos mensajes a los objetos lo haremos a través de referencias 
+Las funciones retornan un valor mientras que los procedimientos tienen un efecto, es decir, modifican algo.
+También podemos enviar mensajes que modifiquen a nuestros objetos pero que no retornen nada. Pero si bien esto se parece bastante a la idea de procedimientos, no usaremos este término.  Pero acabamos de descubrir que no podemos enviarle cualquier mensaje a cualquier objeto, ya que el objeto tendría que entender el mensaje 
+Al conjunto de mensajes que podemos enviarle a un objeto lo denominamos interfaz  si dos objetos entienden un mismo mensaje significa que comparten parte de su interfaz
+
+2-	Clases
+Los objetos tienen atributos y al conjunto de los mismos se los denomina estado. Los atributos también son objetos y nos permiten guardar valores y representar características del objeto que los posea.
+Hagamos un breve repaso. Sabemos que los objetos tienen:
+-	una interfaz, es decir, el conjunto de mensajes que entiende;
+-	un estado, es decir, los atributos que posee.
+Cuidado con la sintaxis. Habrás notado que, a diferencia de cuando enviamos un mensaje, al acceder a un atributo lo hacemos sin el uso de paréntesis.
+ 
+__init__  es lo que se conoce como el constructor de una clase y nos permite darle valores iniciales a los atributos de sus instancias a la hora de crearlas. 
+self es un primer parámetro obligatorio que nos permite acceder a los atributos del objeto que estamos instanciando. Si bien ese parámetro no debe llamarse self obligatoriamente, es la convención que se utiliza para nombrarlo y la respetaremos a lo largo de todo el recorrido. 
+Para que un objeto entienda un mensaje debemos "enseñarle" cómo hacerlo, y para ello es necesario definir un método dentro de la clase a la que pertenece. Un método es, entonces, la descripción de qué hacer cuando se recibe un mensaje del mismo nombre. El conjunto de estos métodos provee de comportamiento a las instancias de una clase.
+Este es el método para que una clase entienda un mensaje:
+ 
+
+En este caso tenemos la clase Celular cuyo estado está compuesto por los atributos batería y saldo, y su interfaz por los mensajes  __init__, cargar_a_tope, tiene_bateria_maxima y necesita_saldo con sus respectivos parámetros. 
+Se pueden agregar nuevos atributos y modificar los constructores de las clases pero al cambiar los constructores también cambia la instanciación y el diagrama de clases
+Lo interesante a la hora de programar con objetos es que cuando les enviamos mensajes, cada objeto le pregunta qué hacer a su clase. Este concepto es conocido como method lookup (búsqueda del método). Por ejemplo, si bien todos los animales entienden el mensaje comer, cada uno lo hace de forma distinta según el método que hayamos definido en su clase.
+
+3-	Polimorfismo y encapsulamiento
+Para que un objeto entienda un mensaje, tenes que definir un método en su clase
+Cuando un objeto puede enviarle el mismo mensaje indistintamente a objetos de distintas clases se llama polimorfismo y es uno de los ejes principales de la programación con objetos.
+Los objetos polimórficos deben pertenecer a clases que entiendan un mismo mensaje más allá de cómo esté definido el método, es decir, dos o más objetos son polimórficos cuando sus clases comparten una interfaz.
+ 
+ 
+Excepción  podemos lanzar nuestras propias excepciones utilizando raise de la siguiente forma...
+ 
+Cuando lanzamos una excepción provocamos un error explícito que interrumpe el flujo de nuestro programa. La excepción no solo aborta el método en el cual la lanzamos sino también la ejecución de todos los métodos de la cadena de envío de mensajes pero no descarta los cambios realizados anteriormente en caso de que los hubiera; es por este motivo que es importante saber en qué momento debemos hacerlo.
+Forzar el polimorfismo   También se puede definir un método de una clase (aunque no lo usemos) para que esta sea polimórfica con las otras clases
+El polimorfismo  nos facilita el hecho de no necesitar saber a qué clase pertenecen los objetos con los que interactuamos. Es importante delegar correctamente para que cada clase se encargue solo de sus responsabilidades y lograr, entre otras ventajas, no romper el encapsulamiento. 
+
+4-	Herencia 
+Superclase  cuando dos objetos repiten lógica, creamos una clase con el comportamiento en común. En el caso que dos clases repitan lógica deberíamos crear una nueva clase a la cual llamamos superclase. A esta nueva clase llevaremos los métodos repetidos y haremos que las clases originales hereden de ella. Estas subclases que heredan de la superclase solo contendrán su comportamiento particular.
+ 
+
+
+
+
+
+
+
+method lookup proceso por el cual le enviamos un mensaje a un objeto, este busca en su clase la definición del método asociado. 
+Al tratar con herencia (SUPERCLASES) cambian un poquito las cosas. Si bien el objeto va a seguir preguntándole a su clase qué debe hacer al recibir el mensaje, en caso de no encontrar un método asociado no va a lanzar una excepción sino que se va a fijar en su superclase. En caso de no encontrar la definición seguirá "subiendo" en la jerarquía de clases y solo fallará nuestro código si el método no fue encontrado en ninguna de ellas
+La herencia nos permite heredar el comportamiento de una superclase pero redefinir aquellas cosas que nuestras subclases hacen distinto.
+Al utilizar súper en el método de una subclase, se evalúa el método con el mismo nombre de su superclase. Por ejemplo:
+ 
+Y así se usa el SUPER para no repetir los CONSTRUCTORES:
+ 
+
+
+
+
+
+
+
+Ejemplo práctico:
+ 
+
+
+
+5-	Colecciones 
+Las listas y diccionarios son conocidas como colecciones y también son objetos
+
+Lista por comprensión  son una herramienta que nos permite hacer mapeos y/o filtrados sobre una lista. Por ejemplo, si quisiéramos obtener el doble de los números mayores a 5 de una lista números podríamos hacer:
+ 
+
+
+Lista sin elementos repetidos: 
+ 
+
+
+Otro tipo de colecciones: SETS
+Son lo mismo que las listas pero: no tienen elementos repetidos y sus elementos no están ordenados.
+Los sets se pueden trabajar utilizando comprensión de la misma forma que las listas. 
+ 
+
+Otro tipo de colecciones: TUPLAS 
+Son parecidas a las listas pero no se pueden modificar por lo que: no podemos agregarles ni quitarles elementos y tampoco podemos modificar el valor de sus elementos.
+Las tuplas se utilizan en aquellos casos donde quisiéramos usar una lista pero ya sabemos de antemano cuántos y qué elementos va a tener.
+ 
+El uso más común de las tuplas es cuando queremos retornar más de una cosa y sabemos exactamente cuántas.
+
+Definí en la clase Persona, el método iniciales que nos retorne una tupla con la primera letra del nombre, la primera letra del segundo nombre y la letra del apellido.
+ 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Expresiones regulares
+Las secuencias de escape son una combinación de caracteres que tiene un significado distinto de los caracteres literales contenidos en ella y se utilizan para definir ciertos caracteres especiales dentro de cadenas de texto, típicamente aquellos que dan formato al mismo. Y aún cuando son un conjunto de caracteres, una secuencia de escape se considerada un carácter único.
+ 
+
+Las expresiones regulares son una secuencia de caracteres que forman un patrón de búsqueda para el trabajo y procesamiento de datos  por ejemplo buscar si existe o no una cadena de caracteres dentro de un texto
+Los metacaracteres son caracteres especiales que, dependiendo del contexto, tienen un significado especial para las expresiones regulares
+Metacaracteres delimitadores  nos permitirán delimitar dónde queremos buscar los patrones de búsqueda. Entre ellos tenemos:
+ 
+
+
+Metacaracteres cuantificadores  permite repetir cierta cantidad de veces una búsqueda dada
+ 
+ 
+
+
+En la práctica lo primero que se hace es IMPORT RE (modulo)
+Veri si una palabra está en un texto: 
+
+
+
+Siguiente Ejercicio: No va a cambiar
+ 
+
+
+
+ 
+ 
+
+
+ 
+
+
+RANGOS
+Nos permiten buscar elementos dentro de una lista que contenga por ej un rango de caracteres o números
+ 
+ 
+
+	
+ 
+
+
+ RANGO NEGADO ( ^ )
+ 
+
+
+  busca tanto el rango de números como el de letras
+
+MATCH  busca si hay coincidencias en un patrón de búsqueda en una cadena de texto (SIEMPRE AL COMIENZO)
+ 
+ 
+
+SEARCH   = que match pero search busca en toda la cadena 
+ 
+
+GROUP()
+.group(parámetro) puede hacer tanto para la función search como match que tire las coincidencias de los distintos paréntesis de las condicciones, según el parámetro que se ponga.
+.groups() devuelve todas las coincidencias sin importar de que paréntesis vienen.
+ 
+?  Priorizar los matches internos
+SUB()
+La función sub permite reemplazar todas las ocurrencias del patrón por otro patrón en un String.
+Sintaxis re.sub(lo que queres cambiar, el remplazo, texto)
+ 
+SPLIT()
+	
+Manejo de excepciones 
+
+Existen 2 tipos de errores en Python, de sintaxis y excepciones.
+
+ERRORES DE SINTAXIS  se detiene la ejecución del programa que hemos creado.
+ 
+
+ERRORES DE EXCEPCIONES  son errores detectados durante la ejecución 
+PALABRAS RESERVADAS  nos permiten manejar las excepciones que puedan surgir y tomar acciones que evitan la interrupción del programa o permitan especificar información adicional antes de interrumpir el programa.
+TRY  nos permite "encapsular" un bloque de código para interceptar e identificar excepciones.
+ 
+Si se produce un error dentro de la declaración try-except, se omite una excepción y se ejecuta el bloque de código que maneja la excepción.
+
+RAISE  Se puede usar para lanzar el tipo de error que queremos y que diga algo en particular.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Manipulación de archivos
+
+Para Python existen dos tipos de archivos: Binarios y de texto. 
+Los archivos de texto son una secuencia de línea, donde cada línea incluye una secuencia de caracteres. Cada línea suele terminar con un carácter de fin de línea (Usualmente \n)
+Los archivos Binarios es cualquier tipo de archivo que no es de texto, solo se pueden interpretar mediante Apps.
+
+Apertura de archivos:
+Para abrir un archivo de texto, ya sea para leerlo o escribir se usa la función open ().
+ 
+Donde:
+Path del archivo = es un objeto en string que indica la ruta donde se encuentra el archivo. Siempre entre comillas
+Modo = es un objeto de tipo string que indica cómo se accederá a ese archivo.
+MODOS DE APERTURA:
+“r”  abre archivo solo para lectura.
+“r+”  abre archivo para lectura y escritura.
+“a”  abre archivo para agregar información. Si el archivo no existe, crea un nuevo para escribir.
+“w”  abre un archivo solo para escribir. Sobrescribe el archivo en caso de que exista, o crea uno nuevo en caso de que no.
+
+Cierre de archivos:
+Cerrar los archivos es importante. Porque si no se puede ralentizar la maquina por el uso excesivo de RAM. También porque muchos cambios en los archivos no se efectúan hasta que se cierra.
+Se puede cerrar un archivo con el método close ().
+ 
+Pero hay otra forma de abrir archivos y que siempre lo cerrara:
+ 
+Esto se cerrara en el momento que se sale del bloque with.  (forma más recomendada de cerrar un archivo)
+
+
+Rutas absolutas y relativas:
+La ruta absoluta es un Path es todo el recorrido en donde se encuentra el archivo. En Windows las carpetas/archivos están separas por “\”.
+Ejemplo   
+
+La ruta relativa, por su parte, es un acote del Path absoluto, cuando ya se encuentra en una carpeta.
+Ejemplo: /Fundamentos/Manipulación_de_archivos.md
+
+Para cambiar hacia adelante se pone un punto, barra y el nombre de la carpeta
+
+Ejemplo: ./Fundamentos/Manipulación_de_archivos.md 
+
+Para ir hacia atrás se pone doble punto (“subir en la jerarquía”)
+
+Ejemplo: cd ../Fotos
+
+El cd responde a Change directory y es el comando que sirve para navegar en el Path.
+
+
+
+Automatización en la construcción de rutas:
+
+Cada programa que se ejecuta en la pc tiene un directorio de trabajo actual, o cwd. Cualquier nombre de archivo que no comience con la carpeta raíz se encentra en el directorio de trabajo actual. Se puede obtener el directorio de trabajo actual como un string, usando la biblioteca OS.
+
+ 
+os.chdir  cambia el directorio 
+os.getcwd  permite ver el directorio actual (donde estas)
+os.mkdir  crea un directorio en blanco en el sistema de archivos
+os.listdir lista los archivos y directorios en el sistema de archivos.
+
+Lectura y escritura de archivos:
+ 
+La funcion write()  hace la escritura de los archivos
+La funcion read()  lee el archivo entero.
+La funcion readline() Lee la primera línea.
+La funcion readlines()  da una lista con todas las líneas del archivo.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Control de versiones
+Sirve para saber dónde metió un cambio otra persona en un código, poder volver a las versiones anteriores (si la cague con algo, volver a la versión que mejor anduvo)
+Git (software) lleva control de otro software 
+Git commit  “sacar una foto” al código como esta (“checkpoint”) 
+Git add  espacio intermedio entre el commit y hacer cambios (siempre antes del commit se hace los add que quieras)
+Git push  empuja los commits a la nube (sube cambios a hithub)
+Git pull  bajar los cambios (de otro archivo) 
+La nube: Es un almacén que se sube de manera online (internet) 
+Internet: es una conexión física que se da a través de cables entre maquinas que están en distintas partes del mundo
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Manipulación de archivos
+
